@@ -15,6 +15,9 @@ public class Matriz {
 		{				
 			 for(int c=0; c<matriz[f].length; c++)
 			 {	
+				if(f == 0){
+					matriz[f][c] = 1;
+				}	
 				 if ( c == f ) {
 					 matriz[f][c] = 1;					
 				 }
