@@ -46,13 +46,19 @@ class ProductTest {
      assertEquals(names, Products.getProductByOrder(product));
 	}
 	
-	
-	
-	
-	
 	@Test
 	void getProductByIdTest() {
 		assertEquals(product.get(2), Products.getProductById(product, 3));
 	}
+	
+	@Test
+    void getProductExampleTest() {
+	 List<Product> names= new ArrayList<>();
+	 Collections.addAll(names,
+				new Product(1,"coca cola","600 ml", 17) ,				
+				new Product(3,"fanta", "naranja", 15)
+				);
+	 assertEquals(names, Products.getProductExample(product, 18));
+	}	
 
 }

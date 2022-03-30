@@ -3,6 +3,7 @@ package PruebasInterface;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -36,6 +37,10 @@ public class Products {
 	  return products.stream().map(i -> i.getPrice()).filter(n -> n <= price).collect(Collectors.toList());
 	}
 	
+	public static List<Product> getProductExample(List<Product> products, int price) {	    
+		  return products.stream().filter(i -> i.getPrice() <= price).collect(Collectors.toList());
+	}
+	
 	public static List<Integer> getExpensiveProduct(List<Product> products, int price) {
 		return products.stream().map(i ->i.getPrice()).filter(n -> n >= price).collect(Collectors.toList());
 	}
@@ -59,6 +64,24 @@ class Product{
 	
 	public int getId() {
 		return id;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(description, id, name, price);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Product other = (Product) obj;
+		return Objects.equals(description, other.description) && id == other.id && Objects.equals(name, other.name)
+				&& price == other.price;
 	}
 
 	public String getDescription() {
